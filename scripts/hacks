@@ -177,6 +177,7 @@ def setup_kanidm_oauth_app(name: str, redirect_uri: str) -> None:
             check=True,
         )
         print(f"Subprocess output: {result.stdout.decode('utf-8')}")
+        print(f"Subprocess error: {result.stderr.decode('utf-8')}")
     except subprocess.CalledProcessError as e:
         print(f"Subprocess error: {e.stderr.decode('utf-8')}")
         return
@@ -188,6 +189,7 @@ def setup_kanidm_oauth_app(name: str, redirect_uri: str) -> None:
         check=True,
     )
     print(f"Subprocess output: {result.stdout.decode('utf-8')}")
+    print(f"Subprocess error: {result.stderr.decode('utf-8')}")
 
     result = subprocess.run(
         # TODO better group management
@@ -196,6 +198,7 @@ def setup_kanidm_oauth_app(name: str, redirect_uri: str) -> None:
         check=True,
     )
     print(f"Subprocess output: {result.stdout.decode('utf-8')}")
+    print(f"Subprocess error: {result.stderr.decode('utf-8')}")
 
     result = subprocess.run(
         ["kanidm", "system", "oauth2", "show-basic-secret", "--url", f"https://{kanidm_host}", "--name", "admin", "--output", "json", name],
@@ -203,6 +206,7 @@ def setup_kanidm_oauth_app(name: str, redirect_uri: str) -> None:
         check=True,
     )
     print(f"Subprocess output: {result.stdout.decode('utf-8')}")
+    print(f"Subprocess error: {result.stderr.decode('utf-8')}")
 
     client_secret = json.loads(result.stdout.decode("utf-8"))['secret']
 
