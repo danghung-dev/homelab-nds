@@ -25,6 +25,10 @@ app-template:
               service: https://ingress-nginx-controller.ingress-nginx
               originRequest:
                 noTLSVerify: true
+            - hostname: '*.bonbonshop.vn'
+              service: https://ingress-nginx-controller.ingress-nginx
+              originRequest:
+                noTLSVerify: true                 
             - service: http_status:404
   persistence:
     config:
