@@ -5,6 +5,7 @@ argo-cd:
     params:
       server.insecure: true
       controller.diff.server.side: true
+      server.dex.server: http://argocd-dex-server:5556
     cm:
       resource.ignoreResourceUpdatesEnabled: true
       resource.customizations.ignoreResourceUpdates.all: |
